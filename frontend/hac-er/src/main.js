@@ -4,10 +4,6 @@ import router from './router'
 import store from './store'
 import Vuetify from 'vuetify'
 import 'vuetify/dist/vuetify.min.css'
-import 'vue-loaders/dist/vue-loaders.css'
-import { BallTrianglePathLoader } from 'vue-loaders'
-
-Vue.component(BallTrianglePathLoader.name, BallTrianglePathLoader)
 
 Vue.use(Vuetify, { theme: {
   primary: '#23A4CE',

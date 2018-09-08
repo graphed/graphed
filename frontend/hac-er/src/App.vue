@@ -1,13 +1,13 @@
 <template>
   <v-app>
-    <side-bar :clipped='clipped' :drawer='drawer' :miniVariant='miniVariant'/>
+    <side-bar :clipped="clipped" :drawer="drawer" :miniVariant="miniVariant"/>
     <v-toolbar
       app
       :clipped-left="clipped"
       color="primary"
     >
-      <v-toolbar-side-icon @click.stop="drawer = !drawer"></v-toolbar-side-icon>
-      <v-toolbar-title v-text="title"></v-toolbar-title>
+      <v-toolbar-side-icon class="white--text" @click.stop="drawer = !drawer"></v-toolbar-side-icon>
+      <v-toolbar-title v-text="title" class="white--text"></v-toolbar-title>
       <v-spacer></v-spacer>
     </v-toolbar>
     <v-content>
