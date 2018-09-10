@@ -30,6 +30,10 @@ let API_URL = 'http://127.0.0.1:5000'
 export default {
   methods: {
     login () {
+      let storage = window.localStorage
+
+      storage.setItem('url', API_URL)
+
       let username = document.getElementById('username').value.trim()
       let password = document.getElementById('password').value.trim()
 
@@ -42,9 +46,19 @@ export default {
         url: API_URL + '/api/grades',
         data: formData
       }).then(response => {
-        console.log(response)
-        this.$store.commit('setClasses', response.data.classes)
-        this.$store.commit('setAuth', response.data.auth_cookie, response.data.session_id)
+        if (response.data.error === true) {
+          alert('your login is wrong')
+        } else {
+          console.log(response)
+          this.$store.commit('setClasses', response.data.classes)
+          this.$store.commit('setAuth', response.data.auth_cookie)
+          this.$store.commit('setSession', response.data.session_id)
+
+          storage.setItem('user', username)
+          storage.setItem('password', password)
+
+          this.$router.push({path: 'home'})
+        }
       }).catch(error => {
         console.log(error)
       })

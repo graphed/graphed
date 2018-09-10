@@ -32,7 +32,8 @@ export default {
       items: [{
         icon: 'settings',
         title: 'Settings'
-      }]
+      }],
+      drawer: this.props.drawer
     }
   },
   props: [

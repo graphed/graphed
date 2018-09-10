@@ -11,13 +11,20 @@ export default new Vuex.Store({
       session: ''
     }
   },
+  getters: {
+    getClass: (state) => (id) => {
+      return state.classes[id]
+    }
+  },
   mutations: {
     setClasses (state, c) {
       state.classes = c
     },
     setAuth (state, cookie, session) {
       state.auth.cookie = cookie
-      state.auth.session = session
+    },
+    setSession (state, sess) {
+      state.auth.session = sess
     }
   },
   actions: {

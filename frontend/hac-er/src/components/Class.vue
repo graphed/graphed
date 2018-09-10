@@ -2,15 +2,15 @@
   <div class="table">
   <v-data-table
       :headers="headers"
-      :items="this.$store.state.classes"
+      :items="this.$store.getters.getClass(Number(this.$route.params.id)).assignments"
       class="elevation-1"
       hide-actions
     >
       <template slot="items" slot-scope="props">
-        <router-link :to="'class/' + props.index">
-          <td>{{ props.item.name }}</td>
-        </router-link>
-        <td class="text-xs-right">{{ props.item.average }}</td>
+        <td>{{ props.item.name }}</td>
+        <td class="text-xs-right">{{ props.item.category }}</td>
+        <td class="text-xs-right">{{ props.item.score }}</td>
+        <td class="text-xs-right">{{ props.item.total_points }}</td>
       </template>
     </v-data-table>
   </div>
@@ -24,16 +24,28 @@ export default {
     return {
       headers: [
         {
-          text: 'Class Name',
+          text: 'Assignment Name',
           align: 'left',
           sortable: false,
           value: 'name'
         },
         {
-          text: 'Average',
-          align: 'right',
+          text: 'Category',
+          align: 'left',
           sortable: true,
-          value: 'average'
+          value: 'category'
+        },
+        {
+          text: 'Score',
+          align: 'left',
+          sortable: true,
+          value: 'score'
+        },
+        {
+          text: 'Total Points',
+          align: 'left',
+          sortable: true,
+          value: 'total_points'
         }
       ]
     }

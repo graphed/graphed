@@ -3,6 +3,7 @@ import Router from 'vue-router'
 import Loading from '@/components/Loading'
 import Home from '@/components/Home'
 import Login from '@/components/Login'
+import Class from '@/components/Class'
 
 Vue.use(Router)
 
@@ -22,6 +23,11 @@ export default new Router({
       path: '/login',
       name: 'login',
       component: Login
+    },
+    {
+      path: '/class/:id',
+      name: 'class',
+      component: Class
     }
   ]
 })

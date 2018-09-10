@@ -79,9 +79,9 @@ def getData(session, session_id=None, auth_cookie=None):
                 if len(columns[4].string) > 0:
                     if columns[4].string == 'CWS':
                         assignment['score'] = 'CWS'
-                    elif columns[4].string == 'L'
+                    elif columns[4].string == 'L':
                         assignment['score'] = 'L'
-                    elif columns[4].string == 'X'
+                    elif columns[4].string == 'X':
                         assignment['score'] = 'X'
                     else:
                         assignment['score'] = float(columns[4].string)
@@ -89,7 +89,7 @@ def getData(session, session_id=None, auth_cookie=None):
                     assignment['score'] = None
 
                 if len(columns[5].string.strip()) > 0:
-                    assignment['total_points'] = float(columns[5].string.strip)
+                    assignment['total_points'] = float(columns[5].string)
                 else:
                     assignment['total_points'] = None
 
