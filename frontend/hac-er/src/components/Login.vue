@@ -25,7 +25,7 @@
 
 <script>
 import axios from 'axios'
-let API_URL = 'http://127.0.0.1:5000'
+let API_URL = 'https://fat-ladybug-64.localtunnel.me'
 
 export default {
   methods: {
