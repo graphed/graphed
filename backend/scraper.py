@@ -25,7 +25,6 @@ def getDataWithToken(session_id, auth_cookie):
 
 def getData(session, session_id=None, auth_cookie=None):
     try:
-        
         data = { 'classes': [], 'session_id': '', 'auth_cookie': '', 'error': False }
 
         # get grades page
@@ -43,7 +42,7 @@ def getData(session, session_id=None, auth_cookie=None):
         data['auth_cookie'] = session.cookies['ASP.NET_SessionId']
 
         # for parsing html
-        soup = BeautifulSoup(res.text, 'html.parser')
+        soup = BeautifulSoup(res.text, 'lxml')
 
         classes = soup.find_all(class_='AssignmentClass')
 
@@ -74,30 +73,25 @@ def getData(session, session_id=None, auth_cookie=None):
                 assignment['category'] = columns[3].string.strip()
 
                 columns[4].string = columns[4].string.strip('\n\r %')
+                columns[5].string = columns[5].string.strip('\n\r %')
 
-                # CAN be None, so check
-                if len(columns[4].string) > 0:
-                    if columns[4].string == 'CWS':
-                        assignment['score'] = 'CWS'
-                    elif columns[4].string == 'L':
-                        assignment['score'] = 'L'
-                    elif columns[4].string == 'X':
-                        assignment['score'] = 'X'
-                    else:
-                        assignment['score'] = float(columns[4].string)
-                else:
-                    assignment['score'] = None
+                try:
+                    assignment['score'] = float(columns[4].string)
+                except ValueError:
+                    assignment['score'] = columns[4].string
 
-                if len(columns[5].string.strip()) > 0:
+                try:
                     assignment['total_points'] = float(columns[5].string)
-                else:
-                    assignment['total_points'] = None
+                except ValueError:
+                    assignment['total_points'] = columns[5].string
 
                 obj['assignments'].append(assignment)
 
             # adding class to collection of classes
             data['classes'].append(obj)
 
+
+        print(json.dumps(data))
         return json.dumps(data)
 
     except Exception as ex:

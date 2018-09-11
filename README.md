@@ -10,12 +10,13 @@ This is the FULL source code for a HAC app called HAC-er!
 
 ### For the Flask Server
 - BeautifulSoup4
+- lxml
 - Requests
 - flask
 - flask-cors
 
 or just type:
-`pip install beautifulsoup4 requests flask flask-cors`
+`pip install -r requirements.txt` in the backend folder
 
 ## How to run the Python server
 
