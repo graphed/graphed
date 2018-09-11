@@ -25,7 +25,7 @@
 
 <script>
 import axios from 'axios'
-let API_URL = 'https://fat-ladybug-64.localtunnel.me'
+let API_URL = 'https://sandy-marshmello-4.localtunnel.me'
 
 export default {
   methods: {
